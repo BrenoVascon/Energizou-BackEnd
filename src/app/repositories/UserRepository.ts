@@ -8,6 +8,28 @@ const getUsers = (): Promise<IUser[]> => {
     return userRepository.find();
 }
 
+
+const updateUser = async (cnpj: string, userData: Partial<IUser>): Promise<IUser | undefined> => {
+    const existingUser = await userRepository.findOne({
+        where: { CNPJ: cnpj }
+    });
+
+    if (existingUser) {
+        try {
+          
+            userRepository.merge(existingUser, userData);
+
+            const updatedUser = await userRepository.save(existingUser);
+            return updatedUser;
+        } catch (error) {
+            console.error(error);
+            throw error;
+        }
+    }
+
+    return undefined; 
+}
+
 const createNewUser = async (data: Partial<IUser>): Promise<IUser> => {
     const newUser = userRepository.create(data);
     await userRepository.save(newUser);
@@ -41,4 +63,4 @@ const deleteByCNPJ = async (cnpj: string): Promise<boolean> => {
 
 
 
-export default { getUsers,getUsersByCnpj, deleteByCNPJ, createNewUser }
+export default { getUsers,getUsersByCnpj, deleteByCNPJ, createNewUser, updateUser}

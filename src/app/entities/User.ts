@@ -1,4 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { IsString, Matches, IsNotEmpty } from 'class-validator';
+import {  cnpj } from 'cpf-cnpj-validator';
+import validator from 'validator';
 
 @Entity('users')
 class User {
@@ -12,25 +15,55 @@ class User {
   password: string;
 
   @Column({ type: 'varchar', length: 100, nullable: false })
-  company: string; // Razão Social
+  company: string; 
+ 
+  @Column({ type: 'varchar', length: 18, nullable: false })
+  CNPJ: string;
 
-  @Column({ type: 'varchar', length: 14, nullable: false })
-  CNPJ: string; // Formato: "XX.XXX.XXX/XXXX-XX"
+  formatAndValidateCNPJ(): boolean {
+  
+    this.CNPJ = this.CNPJ.replace(/\D/g, '');
+    if (cnpj.isValid(this.CNPJ)) {
 
-  @Column({ type: 'varchar', length: 8, nullable: false })
-  cep: string; // Formato: "XXXXX-XXX"
+      this.CNPJ = cnpj.format(this.CNPJ);
+      return true;
+    }
+
+    return false;
+  }
+
+  @Column({ type: 'varchar', length: 9, nullable: false })
+  @IsString()
+  @Matches(/^\d{5}-\d{3}$/, {
+    message: 'CEP deve estar no formato "XXXXX-XXX"',
+  })
+  @IsNotEmpty()
+  cep: string;
+
 
   @Column({ type: 'varchar', length: 100, nullable: false })
-  address: string; // Nome da rua
+  address: string; 
 
   @Column({ type: 'varchar', length: 3, nullable: false })
-  number: string; // Formato: "XXX"
+  number: string;
 
-  @Column({ type: 'varchar', length: 11, nullable: false })
-  phone: string; // Formato: "+55 (XX) XXXXX-XXXX"
+  @Column({ type: 'varchar', length: 18, nullable: false })
+  @IsString()
+  @Matches(/^\+55 \(\d{2}\) \d{5}-\d{4}$/, {
+    message: 'Telefone deve estar no formato "+55 (XX) XXXXX-XXXX"',
+  })
+  phone: string;
+  
 
   @Column({ type: 'varchar', length: 100, nullable: false })
-  email: string; // Deve ser um email válido
+  email: string; 
+  validadeEmail(): boolean {
+   if(validator.isEmail(this.email)) {
+    return true
+   } else {
+    return false
+   }
+  }
 }
 
 export default User;

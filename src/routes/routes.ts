@@ -7,6 +7,6 @@ routers.use('/users', userRouter);
 routers.use('/users/:CNPJ', userRouter)
 routers.use('/:DeleteByCNPJ', userRouter)
 routers.use('/:createUser', userRouter)
-
+routers.use('/:UpdateByCNPJ', userRouter)
 
 export default routers

@@ -31,6 +31,26 @@ userRouter.get('/:CNPJ', async (req: Request, res: Response): Promise<Response> 
     }
 });
 
+userRouter.put('/:UpdateByCNPJ', async (req: Request, res: Response): Promise<Response> => {
+    const cnpj = req.params.CNPJ;
+    const userData = req.body;
+
+    try {
+        const user = await UserRepository.getUsersByCnpj(cnpj);
+
+        if (user) {
+            UserRepository.updateUser(cnpj, userData);
+            return res.status(200).json(user);
+        } else {
+            return res.status(404).json({ message: 'Usuário não encontrado' });
+        }
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: 'Erro ao atualizar o usuário' });
+    }
+});
+
+
 userRouter.delete('/:DeleteByCNPJ', async (req: Request, res: Response): Promise<Response> => {
     const cnpj = req.params.CNPJ;
     const deleted = await UserRepository.deleteByCNPJ(cnpj)
