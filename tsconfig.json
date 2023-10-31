@@ -1,5 +1,6 @@
 {
    "compilerOptions": {
+      "types": ["express"],
       "esModuleInterop": true,
       "lib": [
          "es5",
@@ -12,8 +13,6 @@
       "rootDir": "src",
       "emitDecoratorMetadata": true,
       "experimentalDecorators": true,
-      "sourceMap": true,
-      
-      
+      "sourceMap": true
    }
 }

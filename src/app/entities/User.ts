@@ -15,7 +15,7 @@ class User {
   company: string; // Razão Social
 
   @Column({ type: 'varchar', length: 14, nullable: false })
-  cnpj: string; // Formato: "XX.XXX.XXX/XXXX-XX"
+  CNPJ: string; // Formato: "XX.XXX.XXX/XXXX-XX"
 
   @Column({ type: 'varchar', length: 8, nullable: false })
   cep: string; // Formato: "XXXXX-XXX"

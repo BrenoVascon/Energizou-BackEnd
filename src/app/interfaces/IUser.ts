@@ -3,7 +3,7 @@ interface IUser {
   name: string;
   password: string;
   company: string; // Razão Social da empresa
-  cnpj: string; // Formato: "XX.XXX.XXX/XXXX-XX"
+  CNPJ: string; // Formato: "XX.XXX.XXX/XXXX-XX"
   cep: string; // Formato: "XXXXX-XXX"
   address: string; // Nome da rua
   number: string; // Formato: "XXX"
