@@ -5,22 +5,23 @@ import IUser from '../interfaces/IUser';
 
 const userRouter = Router();
 
-userRouter.post('/createUser', async (_req: Request, res: Response): Promise<Response> => {
-   try {
-    const newUser = await UserRepository.createNewUser(_req.body);
-    return res.status(201).json(newUser)
-} catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: 'Erro ao criar o usuário' });
-}
-});
+userRouter.post('/users/', async (_req: Request, res: Response): Promise<Response> => { 
+    try { 
+      const newUser = await UserRepository.createNewUser(_req.body); 
+      return res.status(201).json(newUser);
+    } catch (error) { 
+      console.error(error); 
+      return res.status(500).json({ message: 'Erro ao criar o usuário' }); 
+    } 
+  });
+  
 
-userRouter.get('/', async (_req: Request, res: Response): Promise<Response> => {
+userRouter.get('/users/', async (_req: Request, res: Response): Promise<Response> => {
     const users = await UserRepository.getUsers();
     return res.status(200).json(users);
 });
 
-userRouter.get('/:CNPJ', async (req: Request, res: Response): Promise<Response> => {
+userRouter.get('/users/:cnpj', async (req: Request, res: Response): Promise<Response> => {
     const cnpj = req.params.CNPJ;
     const user = await UserRepository.getUsersByCnpj(cnpj);
 
@@ -31,7 +32,7 @@ userRouter.get('/:CNPJ', async (req: Request, res: Response): Promise<Response> 
     }
 });
 
-userRouter.put('/:UpdateByCNPJ', async (req: Request, res: Response): Promise<Response> => {
+userRouter.put('/users/:cnpj', async (req: Request, res: Response): Promise<Response> => {
     const cnpj = req.params.CNPJ;
     const userData = req.body;
 
@@ -51,7 +52,7 @@ userRouter.put('/:UpdateByCNPJ', async (req: Request, res: Response): Promise<Re
 });
 
 
-userRouter.delete('/:DeleteByCNPJ', async (req: Request, res: Response): Promise<Response> => {
+userRouter.delete('/users/:cnpj', async (req: Request, res: Response): Promise<Response> => {
     const cnpj = req.params.CNPJ;
     const deleted = await UserRepository.deleteByCNPJ(cnpj)
 
