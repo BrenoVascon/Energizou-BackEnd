@@ -4,7 +4,7 @@ import userRouter from '../app/controllers/UserController'
 
 
 const routers = Router();
-routers.use('/', userRouter);
+routers.use('/users', userRouter);
 
 
 export default routers
