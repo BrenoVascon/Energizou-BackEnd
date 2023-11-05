@@ -3,7 +3,7 @@ import { IsString, Matches, IsNotEmpty } from 'class-validator';
 
 import validator from 'validator';
 
-@Entity('users')
+@Entity('Users')
 class User {
   @PrimaryGeneratedColumn()
   id: number;
