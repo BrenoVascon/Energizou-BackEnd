@@ -56,8 +56,10 @@ Para iniciar o projeto localmente, siga as instruções abaixo:
    > ```
    >
    > Ou `yarn`:
-   > yarn 
+   >  
    > ```bash
+   >  yarn
+   > ```
   
 
 3. **Inicie o Servidor do Node**:
