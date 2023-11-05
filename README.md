@@ -75,12 +75,14 @@ Para iniciar o projeto localmente, siga as instruções abaixo:
 
 
 4. Agora, você pode acessar o projeto em [http://localhost:3333/](http://localhost:3333/).
+5. Para usar a Api utilize as seguintes rotas no front-end
+
+![code](https://github.com/BrenoVascon/Energizou-BackEnd/assets/72839350/7d912a7b-7257-428a-9ec3-0a4d431829f0)
 
 
 
 ## Abordagem
-
-- Teste e Documentação da API com Insomnia
+-**Teste e Documentação da API com Insomnia
 O Insomnia é uma ferramenta popular para testar APIs e documentar solicitações HTTP. Ele oferece uma interface amigável para criar, organizar e executar solicitações de API, permitindo que você teste todas as funcionalidades da sua aplicação de forma eficiente. Aqui está como o utilizamos em nosso projeto:
 
 -**Configuração Inicial**
