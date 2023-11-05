@@ -81,8 +81,8 @@ Para iniciar o projeto localmente, siga as instruções abaixo:
 
 
 
-## Abordagem
--**Teste e Documentação da API com Insomnia
+## Testes
+-Teste e Documentação da API com Insomnia
 O Insomnia é uma ferramenta popular para testar APIs e documentar solicitações HTTP. Ele oferece uma interface amigável para criar, organizar e executar solicitações de API, permitindo que você teste todas as funcionalidades da sua aplicação de forma eficiente. Aqui está como o utilizamos em nosso projeto:
 
 -**Configuração Inicial**
