@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 import { IsString, Matches, IsNotEmpty } from 'class-validator';
-import {  cnpj } from 'cpf-cnpj-validator';
+import { cnpj } from 'cpf-cnpj-validator';
 import validator from 'validator';
 
 @Entity('users')
@@ -19,16 +19,18 @@ class User {
  
   @Column({ type: 'varchar', length: 18, nullable: false })
   CNPJ: string;
-
-  formatAndValidateCNPJ(): boolean {
   
+  formatCNPJ(): string {
     this.CNPJ = this.CNPJ.replace(/\D/g, '');
-    if (cnpj.isValid(this.CNPJ)) {
-
-      this.CNPJ = cnpj.format(this.CNPJ);
+    return this.CNPJ;
+  }
+  
+  validateCNPJ(): boolean {
+    const formattedCNPJ = this.formatCNPJ();
+    if (cnpj.isValid(formattedCNPJ)) {
+      this.CNPJ = formattedCNPJ; // Atualize o valor do CNPJ para a versão formatada
       return true;
     }
-
     return false;
   }
 

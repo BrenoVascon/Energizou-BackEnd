@@ -53,11 +53,11 @@ userRouter.put('/:cnpj', async (req: Request, res: Response): Promise<Response> 
 
 
 userRouter.delete('/:cnpj', async (req: Request, res: Response): Promise<Response> => {
-    const cnpj = req.params.CNPJ;
-    const deleted = await UserRepository.deleteByCNPJ(cnpj)
+    const cnpj = req.params.CNPJ; // Use 'cnpj' here, not 'CNPJ'
+    const deleted = await UserRepository.deleteByCNPJ(cnpj);
 
     if (deleted) {
-        return res.status(200).json({message: 'Usuário excluído com sucesso'});
+        return res.status(200).json({ message: 'Usuário excluído com sucesso' });
     } else {
         return res.status(404).json({ message: 'Usuário não encontrado' });
     }
