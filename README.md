@@ -5,11 +5,17 @@
 
 # Projeto de API Crud
 
-Este é um projeto de exemplo de uma API REST feito em Django, desenvolvido como parte do desafio proposto pela Generation Brasil e Potencia Tech.
+Este é um projeto de uma API REST feito em Node, desenvolvido como parte do desafio proposto pela Energizou, aonde preciso fornecer rotas Api´s para utilizar na aplicação front-end essas rotas são
+● Criar uma nova empresa.
+● Listar todas as empresas cadastradas.
+● Consultar uma empresa específica por CNPJ.
+● Atualizar os dados de uma empresa.
+● Excluir uma empresa
+. 
 
 ## Link de acesso ao projeto
+https://github.com/BrenoVascon/Energizou-BackEnd
 
-https://django-potencia-tech.onrender.com/api/v1/docs/
 
 ## Sumário:
 
@@ -26,25 +32,15 @@ Este projeto demonstra a criação de uma API RESTful usando o framework Django.
 ## Tecnologias
 
 Este projeto faz uso de diversas tecnologias e ferramentas, incluindo:
+ -TypeScript: Um superconjunto tipado do JavaScript que fornece recursos adicionais de verificação de tipos e ferramentas de compilação.
 
-- **Django**: Um framework web em Python amplamente utilizado para o desenvolvimento de aplicações web.
+ -Node.js: Uma plataforma de tempo de execução de JavaScript que permite executar código JavaScript do lado do servidor.
 
-- **Docker**: Uma plataforma que permite a criação, implantação e execução de aplicativos em contêineres.
+ -MySQL: Um sistema de gerenciamento de banco de dados relacional amplamente utilizado.
 
-- **GitHub Actions**: Uma funcionalidade do GitHub que permite a automação de fluxos de trabalho, como integração contínua e implantação contínua.
+ -TypeORM: Uma biblioteca de mapeamento objeto-relacional (ORM) para TypeScript e JavaScript que simplifica a interação com bancos de dados relacionais.
 
-- **Swagger**: Uma estrutura de código aberto que ajuda a projetar, construir, documentar e consumir serviços da web RESTful.
-
-- **Django Rest Framework (DRF)**: Uma poderosa e flexível toolkit para criar Web APIs em Django.
-
-- **Pytest**: Uma estrutura de teste que torna mais fácil escrever testes simples e escaláveis em Python.
-
-- **Poetry**: Uma ferramenta para gerenciar dependências e ambientes virtuais em projetos Python.
-
-- **Render**: Uma plataforma de implantação e hospedagem para aplicativos web e serviços.
-
-- **Makefile**: Um arquivo de configuração que define comandos e alvos personalizados, como construção, execução de testes e linting, simplificando tarefas de desenvolvimento.
-
+-Yarn: Um gerenciador de pacotes para JavaScript que ajuda a gerenciar dependências de projetos de forma eficiente.
 ## Setup
 
 ### Iniciando o Projeto Localmente
@@ -53,72 +49,51 @@ Para iniciar o projeto localmente, siga as instruções abaixo:
 
 1. **Clone o Repositório**: Faça uma cópia deste repositório em sua máquina local.
 
-2. **Configuração do Node com TypeORM**:
-
-   > Como `pip`:
+2. **Instale as dependencias**:
    >
    > ```bash
    > npm install 
    > ```
    >
    > Ou `yarn`:
-   >
+   > yarn 
    > ```bash
   
 
-3. **Migrações do Banco de Dados**: Aplique as migrações para configurar o banco de dados:
+3. **Inicie o Servidor do Node**:
 
    ```bash
-   python manage.py makemigrations
-   python manage.py migrate
+   depois de instalar as dependencias, 
+   use o comando npm dev:server.
+   se tudo ocorrer certo, no terminal aparecera o seguinte
+   "Database OK
+   Server started on port 3333"
    ```
 
-4. **Inicie o Servidor de Desenvolvimento do Django**:
 
-   ```bash
-   python manage.py runserver
-   ```
 
-5. Agora, você pode acessar o projeto em [http://localhost:8000/](http://localhost:8000/).
+4. Agora, você pode acessar o projeto em [http://localhost:3333/](http://localhost:3333/).
 
-### Iniciando o Projeto com Docker
 
-Se preferir usar Docker, siga estas etapas:
-
-1. **Clone o Repositório**: Clone o repositório em sua máquina local.
-
-2. Certifique-se de que o Docker e o Docker Compose estejam instalados.
-
-3. Execute o seguinte comando para construir o ambiente de desenvolvimento:
-
-   ```bash
-   make build
-   ```
-
-4. Após a conclusão da construção, inicie o servidor do Django com o seguinte comando:
-
-   ```bash
-   make start
-   ```
-
-5. Agora, você pode acessar o projeto em [http://localhost:8000/](http://localhost:8000/).
 
 ## Abordagem
 
-- **Test-Driven Development (TDD)**: Implementamos a abordagem TDD com Pytest, escrevendo testes unitários antes de desenvolver a funcionalidade real. E também separamos o banco de dados de prod e de testes. Isso ajudou a garantir a confiabilidade do código e facilitou futuras modificações. 
+- Teste e Documentação da API com Insomnia
+O Insomnia é uma ferramenta popular para testar APIs e documentar solicitações HTTP. Ele oferece uma interface amigável para criar, organizar e executar solicitações de API, permitindo que você teste todas as funcionalidades da sua aplicação de forma eficiente. Aqui está como o utilizamos em nosso projeto:
 
-- **Design Patterns**: Aplicamos padrões de design reconhecidos, como o modelo MTV (Model-Template-View) do Django, que promove a separação de responsabilidades em nossa aplicação.
+-**Configuração Inicial**
+Instalação: Você pode baixar e instalar o Insomnia a partir do site oficial.
 
-- **Versionamento de API**: Para garantir a estabilidade e compatibilidade, adotamos um sistema de versionamento de API. Isso permite a evolução controlada da API sem impactar os clientes existentes.
+-**Importação das Solicitações**: Importamos coleções de solicitações do Insomnia para testar nossa API. Essas coleções podem ser compartilhadas com a equipe para manter um conjunto consistente de testes.
 
-- **Estilo de Código**: Seguimos um estilo de código consistente e claro, aderindo às diretrizes PEP 8 para Python. Utilizamos nomes de variáveis descritivos e optamos pelo uso de comentários significativos quando necessário.
+-**Organização**
+No Insomnia, organizamos nossas solicitações em pastas e coleções. Isso nos ajuda a manter uma estrutura lógica e fácil de navegar para nossos testes.
 
-- **Integração Contínua**: Implementamos um pipeline de integração contínua usando o GitHub Actions. Isso nos permitiu automatizar testes, análise de código e implantação.
+-**Variáveis de Ambiente**
+Usamos variáveis de ambiente para armazenar informações sensíveis, como URLs da API e chaves de autenticação. Isso nos permite manter nossas solicitações flexíveis e seguras.
 
-- **Commits Semânticos**: Adotamos a prática de commits semânticos para manter um histórico de alterações legível e informativo.
+-**Testes Automatizados**
+O Insomnia oferece suporte para escrever scripts de teste automatizados. Isso nos ajuda a verificar automaticamente as respostas da API e garantir que tudo esteja funcionando conforme o esperado.
 
-## LICENÇAS DE UTILIZAÇÃO
-
-Este projeto é distribuído sob a licença MIT. Consulte o arquivo [LICENSE](LICENSE) para obter detalhes completos sobre os termos da licença.
-
-Sinta-se à vontade para contribuir com melhorias ou correções para este projeto. Basta abrir uma issue ou enviar um pull request.
+-**Documentação**
+Além de testar a API, o Insomnia nos permite documentar nossas solicitações e respostas. Isso é útil para compartilhar informações com outros membros da equipe e até mesmo para criar uma documentação oficial da API.
