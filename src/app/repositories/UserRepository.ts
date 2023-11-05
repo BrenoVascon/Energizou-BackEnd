@@ -4,27 +4,25 @@ import { AppDataSource } from "../../database/data-source";
 
 const userRepository = AppDataSource.getRepository(User);
 
-const getUsers = async (): Promise<IUser[]> => {
+const getUsers = (): Promise<IUser[]> => {
     return userRepository.find();
 }
 
+
 const updateUser = async (cnpj: string, userData: Partial<IUser>): Promise<IUser | undefined> => {
-    const existingUser = await userRepository.findOne({
-        where: { CNPJ: cnpj }
-    });
+    try {
+        const existingUser = await userRepository.findOneOrFail({
+            where: { cnpj: cnpj }
+        });
 
-    if (existingUser) {
-        try {
-            userRepository.merge(existingUser, userData);
-            const updatedUser = await userRepository.save(existingUser);
-            return updatedUser;
-        } catch (error) {
-            console.error(error);
-            throw error;
-        }
+        userRepository.merge(existingUser, userData);
+        const updatedUser = await userRepository.save(existingUser);
+
+        return updatedUser;
+    } catch (error) {
+        console.error(error);
+        throw error;
     }
-
-    return undefined;
 }
 
 const createNewUser = async (data: Partial<IUser>): Promise<IUser> => {
@@ -34,25 +32,36 @@ const createNewUser = async (data: Partial<IUser>): Promise<IUser> => {
 }
 
 const getUsersByCnpj = async (cnpj: string): Promise<IUser | undefined> => {
-    return userRepository.findOne({ where: { CNPJ: cnpj } });
-
+    try {
+        const user = await userRepository.findOne({ where: { cnpj: cnpj } });
+        return user;
+    } catch (error) {
+        console.error(error);
+        throw error; 
+    }
 }
 
-const deleteByCNPJ = async (cnpj: string): Promise<boolean> => {
-    const user = await userRepository.findOne({ where: { CNPJ: cnpj } });
 
+
+const deleteByCNPJ = async (cnpj: string): Promise<boolean> => {
+    const user = await userRepository.findOne({
+        where: { cnpj : cnpj }
+    });
 
     if (user) {
         try {
             await userRepository.remove(user);
-            return true;
+            return true; 
         } catch (error) {
             console.error(error);
-            return false;
+            return false; 
         }
     } else {
-        return false;
+        return false; 
     }
 }
 
-export default { getUsers, getUsersByCnpj, deleteByCNPJ, createNewUser, updateUser };
+
+
+
+export default { getUsers,getUsersByCnpj, deleteByCNPJ, createNewUser, updateUser}

@@ -32,15 +32,15 @@ export class CreateUsersTable1698909248807 implements MigrationInterface {
                 isNullable: false,
               },
               {
-                name: 'CNPJ',
+                name: 'cnpj',
                 type: 'varchar',
-                length: '20', // Aumentei o comprimento para acomodar "XX.XXX.XXX/XXXX-XX"
+                length: '20', 
                 isNullable: false,
               },
               {
                 name: 'cep',
                 type: 'varchar',
-                length: '10', // Acomoda "XXXXX-XXX"
+                length: '10', 
                 isNullable: false,
               },
               {
@@ -52,13 +52,13 @@ export class CreateUsersTable1698909248807 implements MigrationInterface {
               {
                 name: 'number',
                 type: 'varchar',
-                length: '3', // Acomoda "XXX"
+                length: '3', 
                 isNullable: false,
               },
               {
                 name: 'phone',
                 type: 'varchar',
-                length: '20', // Acomoda "+55 (XX) XXXXX-XXXX"
+                length: '20', 
                 isNullable: false,
               },
               {
