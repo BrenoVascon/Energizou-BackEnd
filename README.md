@@ -23,7 +23,7 @@ https://github.com/BrenoVascon/Energizou-BackEnd
 - [Tecnologias](#tecnologias)
 - [Setup](#setup)
 - [Abordagem](#abordagem)
-- [License](#license)
+
 
 ## Sobre o Projeto
 
